@@ -3,60 +3,60 @@ from guicreator.creators.ThresholdCreator import ThresholdCreator
 
 
 class ThresholdCheck:
-    def __init__(self, threshold_creator: ThresholdCreator):
-        self.threshold_check: tk.IntVar = threshold_creator.create_method_checkbox()
+    def __init__(self, creator: ThresholdCreator):
+        self.check: tk.IntVar = creator.create_method_checkbox()
 
     def get(self):
-        return self.threshold_check.get()
+        return self.check.get()
 
 
 class ThresholdAuxiliaryCheck:
-    def __init__(self, threshold_creator: ThresholdCreator):
-        self.threshold_auxiliary_check: tk.IntVar = threshold_creator.create_auxiliary_method_checkbox()
+    def __init__(self, creator: ThresholdCreator):
+        self.auxiliary_check: tk.IntVar = creator.create_auxiliary_method_checkbox()
 
     def get(self):
-        return self.threshold_auxiliary_check.get()
+        return self.auxiliary_check.get()
 
 
 class ThresholdMin:
-    def __init__(self, threshold_creator: ThresholdCreator):
-        self.threshold_min: tk.Scale = threshold_creator.create_min_scale()
+    def __init__(self, creator: ThresholdCreator):
+        self.min: tk.Scale = creator.create_min_scale()
 
     def get(self):
-        return self.threshold_min.get()
+        return self.min.get()
 
 
 class ThresholdMax:
-    def __init__(self, threshold_creator: ThresholdCreator):
-        self.threshold_max: tk.Scale = threshold_creator.create_max_scale()
+    def __init__(self, creator: ThresholdCreator):
+        self.max: tk.Scale = creator.create_max_scale()
 
     def get(self):
-        return self.threshold_max.get()
+        return self.max.get()
 
 
 class ThresholdMethod:
-    def __init__(self, threshold_creator: ThresholdCreator):
-        self.threshold_method: tk.StringVar = threshold_creator.create_method_option_menu()
+    def __init__(self, creator: ThresholdCreator):
+        self.method: tk.StringVar = creator.create_method_option_menu()
 
     def get(self):
-        return self.threshold_method.get()
+        return self.method.get()
 
 
 class ThresholdAuxiliaryMethod:
-    def __init__(self, threshold_creator: ThresholdCreator):
-        self.threshold_auxiliary_method: tk.StringVar = threshold_creator.create_auxiliary_method_option_menu()
+    def __init__(self, creator: ThresholdCreator):
+        self.auxiliary_method: tk.StringVar = creator.create_auxiliary_method_option_menu()
 
     def get(self):
-        return self.threshold_auxiliary_method.get()
+        return self.auxiliary_method.get()
 
 
 class ThresholdGui:
     def __init__(self, root, process_image_function):
-        threshold_creator = ThresholdCreator(root, process_image_function)
+        creator = ThresholdCreator(root, process_image_function)
 
-        self.threshold_check = ThresholdCheck(threshold_creator)
-        self.threshold_auxiliary_check = ThresholdAuxiliaryCheck(threshold_creator)
-        self.threshold_min = ThresholdMin(threshold_creator)
-        self.threshold_max = ThresholdMax(threshold_creator)
-        self.threshold_method = ThresholdMethod(threshold_creator)
-        self.threshold_auxiliary_method = ThresholdAuxiliaryMethod(threshold_creator)
+        self.check = ThresholdCheck(creator)
+        self.auxiliary_check = ThresholdAuxiliaryCheck(creator)
+        self.min = ThresholdMin(creator)
+        self.max = ThresholdMax(creator)
+        self.method = ThresholdMethod(creator)
+        self.auxiliary_method = ThresholdAuxiliaryMethod(creator)

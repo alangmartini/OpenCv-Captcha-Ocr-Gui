@@ -9,9 +9,13 @@ class ImageProcessor:
 
     def __init__(self, image_path) -> None:
         self.image_path = image_path
-        self.cv_img = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
+        self.cv_img = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2GRAY)
         self.raw_img = self.cv_img
 
+    def threshold_image(self, min, max, method):
+        self.cv_img = cv2.threshold(self.cv_img, min, max, method)[1]
+
+        
     def preprocess_image(self, image_path):
         # Load the image from file
         image = cv2.imread(image_path)
@@ -39,12 +43,5 @@ class ImageProcessor:
         self.cv_img = self.raw_img
 
     def blur_image(self, image, blur_amount):
-        print("aqui estou")
         self.cv_img = cv2.GaussianBlur(image, (blur_amount, blur_amount), 0)
     
-    def threshold_image(self, min, max, method):
-        print("ola")
-        print("min", min)
-        print("max", max)
-        print("method", cv2.THRESH_BINARY)
-        self.cv_img = cv2.threshold(self.cv_img, min, max, method)[1]

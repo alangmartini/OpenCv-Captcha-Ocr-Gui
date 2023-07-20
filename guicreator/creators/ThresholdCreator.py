@@ -44,7 +44,7 @@ class ThresholdCreator:
     
     def create_method_checkbox(self):
         is_method_checked = tk.IntVar(self.root)
-        method_check = tk.Checkbutton(self.root, text='Use auxiliary method', variable=is_method_checked)
+        method_check = tk.Checkbutton(self.root, text='Threshold', variable=is_method_checked)
         method_check.pack()
 
         return is_method_checked
