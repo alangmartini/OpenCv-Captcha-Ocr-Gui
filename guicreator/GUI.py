@@ -1,6 +1,8 @@
 import tkinter as tk
 from guicreator.elements.ThresholdGui import ThresholdGui
 from guicreator.elements.MethodsListBoxGui import MethodsListBoxGui
+from guicreator.elements.ResizeGui import ResizeGui
+
 
 class Gui():
     def __init__(self, method_to_list, process_image_function=None, ocr_function=None):
@@ -10,14 +12,24 @@ class Gui():
 
             process_image_function = pass_fn
         
-        self.root = tk.Tk()
+        # Function to process the images
         self.process_image_function = process_image_function
+
+        # Function to ocr the images
         self.ocr_function = ocr_function
 
-        self.threshold = ThresholdGui(self.root, process_image_function)
+        # Main Window
+        self.root = tk.Tk()
+        
+        # Title
+        self.root.title("Image Processor")
+
+        # List all possible methods
         self.methods_listbox = MethodsListBoxGui(self.root, method_to_list)
 
-        self.root.title("Image Processor")
+        # Methods parameters
+        self.threshold = ThresholdGui(self.root, process_image_function)
+        self.resize = ResizeGui(self.root, process_image_function)
 
     def start(self): 
         process_button = tk.Button(self.root, text='Process', command=self.ocr_function)

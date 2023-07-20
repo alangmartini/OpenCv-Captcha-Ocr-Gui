@@ -1,8 +1,7 @@
 import cv2
 from PIL import Image
-import tkinter as tk
-from tkinter import filedialog, Scale
 import os
+
 
 class ImageProcessor:
     color_conversion_codes = [cv2.COLOR_BGR2GRAY, cv2.COLOR_BGR2HSV, cv2.COLOR_BGR2HLS, cv2.COLOR_BGR2RGB, cv2.COLOR_BGR2YUV, cv2.COLOR_RGB2GRAY, cv2.COLOR_RGB2HSV, cv2.COLOR_RGB2HLS, cv2.COLOR_RGB2BGR, cv2.COLOR_RGB2YUV]
@@ -15,7 +14,9 @@ class ImageProcessor:
     def threshold_image(self, min, max, method):
         self.cv_img = cv2.threshold(self.cv_img, min, max, method)[1]
 
-        
+    def resize_image(self, width, height):
+        self.cv_img = cv2.resize(self.cv_img, (width, height))
+
     def preprocess_image(self, image_path):
         # Load the image from file
         image = cv2.imread(image_path)

@@ -3,13 +3,15 @@ import threading
 import cv2
 from imageprocessor.ImageProcessor import ImageProcessor
 from guicreator.Gui import Gui
-from chains import BlurChain, ThresholdChain
+from chains import ThresholdChain, ResizeChain
 from ocr.Ocr import ImageRecognition
+
 
 class Main:
     methods_mapping = {
         # "Blur": BlurChain.BlurChain,
-        "Threshold": ThresholdChain.ThresholdChain
+        "Threshold": ThresholdChain.ThresholdChain,
+        "Resize": ResizeChain.ResizeChain
     }
 
     def __init__(self) -> None:
