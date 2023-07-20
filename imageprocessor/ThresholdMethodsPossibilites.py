@@ -1,0 +1,35 @@
+import cv2
+
+class ThresholdMethodsPossibilites:
+# All threshold possibilities
+    threshold_methods = {
+    'THRESH_BINARY': cv2.THRESH_BINARY,
+    'THRESH_BINARY_INV': cv2.THRESH_BINARY_INV,
+    'THRESH_TRUNC': cv2.THRESH_TRUNC,
+    'THRESH_TOZERO': cv2.THRESH_TOZERO,
+    'THRESH_TOZERO_INV': cv2.THRESH_TOZERO_INV,
+    'THRESH_MASK': cv2.THRESH_MASK,
+    }
+
+    threshold_auxiliary_methods = {
+    'THRESH_OTSU': cv2.THRESH_OTSU,
+    'THRESH_TRIANGLE': cv2.THRESH_TRIANGLE,
+    }
+
+    threshold_otsu_join = {
+        'THRESH_BINARY': cv2.THRESH_BINARY | cv2.THRESH_OTSU,
+        'THRESH_BINARY_INV': cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU,
+        'THRESH_TRUNC': cv2.THRESH_TRUNC | cv2.THRESH_OTSU,
+        'THRESH_TOZERO': cv2.THRESH_TOZERO | cv2.THRESH_OTSU,
+        'THRESH_TOZERO_INV': cv2.THRESH_TOZERO_INV | cv2.THRESH_OTSU,
+        'THRESH_MASK': cv2.THRESH_MASK | cv2.THRESH_OTSU,
+    }
+
+    threshold_triangle_join = {
+        'THRESH_BINARY': cv2.THRESH_BINARY | cv2.THRESH_TRIANGLE,
+        'THRESH_BINARY_INV': cv2.THRESH_BINARY_INV | cv2.THRESH_TRIANGLE,
+        'THRESH_TRUNC': cv2.THRESH_TRUNC | cv2.THRESH_TRIANGLE,
+        'THRESH_TOZERO': cv2.THRESH_TOZERO | cv2.THRESH_TRIANGLE,
+        'THRESH_TOZERO_INV': cv2.THRESH_TOZERO_INV | cv2.THRESH_TRIANGLE,
+        'THRESH_MASK': cv2.THRESH_MASK | cv2.THRESH_TRIANGLE,
+    }
