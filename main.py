@@ -1,5 +1,5 @@
 from imageprocessor.ImageProcessor import ImageProcessor
-from guicreator.GUI import Gui
+from guicreator.Gui import Gui
 from imageprocessor.ThresholdMethodsPossibilites import ThresholdMethodsPossibilites
 import cv2
 import threading
@@ -53,7 +53,6 @@ class Main:
         self.gui = None
         self.image_processor = ImageProcessor(r'./captchas/1.png')
 
-
         cv2.namedWindow('Result')
 
     def process_image(self, x):
@@ -64,11 +63,10 @@ class Main:
         for method in methods_to_apply:
             Main.methods_mapping[method].process_image(self.image_processor, self.gui)
         
-
     def gui_loop(self):
         self.gui = Gui(list(Main.methods_mapping.keys()), self.process_image)
 
-        self.gui.start(self.process_image)
+        self.gui.start()
 
     def start_gui_loop(self):
         self.thread_gui = threading.Thread(target=self.gui_loop)
@@ -84,7 +82,6 @@ class Main:
         
         cv2.destroyAllWindows()
             
-
     def start(self):
         self.start_gui_loop()
         self.image_show_loop()
