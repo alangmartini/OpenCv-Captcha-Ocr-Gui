@@ -9,13 +9,13 @@ class GaussianBlurCreator:
     def create_method_checkbox(self):
         check = tk.IntVar()
         c = tk.Checkbutton(self.root, text="GaussianBlur", variable=check, command=self.process_image_function)
-        c.pack()
+        c.pack(side=tk.RIGHT)
 
         return check
 
     def create_size_scale(self):
         size = tk.Scale(self.root, label="size", from_=1, to=100, orient=tk.HORIZONTAL, command=self.process_image_function)
-        size.pack()
+        size.pack(side=tk.RIGHT)
         return size
 
     def create_sigma_scale(self):

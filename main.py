@@ -3,15 +3,20 @@ import threading
 import cv2
 from imageprocessor.ImageProcessor import ImageProcessor
 from guicreator.Gui import Gui
-from chains import ThresholdChain, ResizeChain
+from chains.ThresholdChain import ThresholdChain
+from chains.ResizeChain import ResizeChain
+from chains.GaussianBlurChain import GaussianBlurChain
+from chains.FindContoursChain import FindContoursChain
 from ocr.Ocr import ImageRecognition
 
 
 class Main:
     methods_mapping = {
         # "Blur": BlurChain.BlurChain,
-        "Threshold": ThresholdChain.ThresholdChain,
-        "Resize": ResizeChain.ResizeChain
+        "Resize": ResizeChain,
+        "GaussianBlur": GaussianBlurChain,
+        "Threshold": ThresholdChain,
+        "FindContours": FindContoursChain,
     }
 
     def __init__(self) -> None:
@@ -27,6 +32,8 @@ class Main:
         self.image_processor.reset_image()
         
         methods_to_apply = self.gui.methods_listbox.listbox.get()
+
+        print(methods_to_apply)
 
         for method in methods_to_apply:
             Main.methods_mapping[method].process_image(self.image_processor, self.gui)
