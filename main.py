@@ -73,7 +73,8 @@ class Main:
         self.start_thread_gui_loop()
         self.image_show_loop()
       
+      
 if __name__ == "__main__":
-  new_gui = Main()
+    new_gui = Main()
     
-  new_gui.start()
+    new_gui.start()

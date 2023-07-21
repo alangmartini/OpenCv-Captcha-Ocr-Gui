@@ -1,5 +1,25 @@
 import tkinter as tk
 from guicreator.creators.ThresholdCreator import ThresholdCreator
+from guicreator.elements.AbstractGui import AbstractGui
+
+
+class ThresholdGui(AbstractGui):
+    def __init__(self, root, process_image_function):
+        # Creates self.creator with the class in self.get_creator()
+        super().__init__(root, process_image_function, "Threshold", "+100+100")
+        # self.window = tk.Toplevel(root)
+        # self.window.title("Threshold")
+        
+        # Gui Elements
+        self.check = ThresholdCheck(self.creator)
+        self.auxiliary_check = ThresholdAuxiliaryCheck(self.creator)
+        self.min = ThresholdMin(self.creator)
+        self.max = ThresholdMax(self.creator)
+        self.method = ThresholdMethod(self.creator)
+        self.auxiliary_method = ThresholdAuxiliaryMethod(self.creator)
+
+    def get_creator(self, window, process_image_function):
+        return ThresholdCreator(window, process_image_function)
 
 
 class ThresholdCheck:
@@ -48,15 +68,3 @@ class ThresholdAuxiliaryMethod:
 
     def get(self):
         return self.auxiliary_method.get()
-
-
-class ThresholdGui:
-    def __init__(self, root, process_image_function):
-        creator = ThresholdCreator(root, process_image_function)
-
-        self.check = ThresholdCheck(creator)
-        self.auxiliary_check = ThresholdAuxiliaryCheck(creator)
-        self.min = ThresholdMin(creator)
-        self.max = ThresholdMax(creator)
-        self.method = ThresholdMethod(creator)
-        self.auxiliary_method = ThresholdAuxiliaryMethod(creator)

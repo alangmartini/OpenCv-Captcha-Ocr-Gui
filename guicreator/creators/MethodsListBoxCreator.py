@@ -1,29 +1,34 @@
 import tkinter as tk
 
 
-class ListBoxDrag:
-  def drag_start(event):
-      widget = event.widget
-      widget.drag_data = widget.get(tk.ACTIVE)
+class ListBoxUpAndDown:
+    @staticmethod
+    def move_up(listbox):
+        # get the index of the current selection
+        selected_index = listbox.curselection()[0]
+        if selected_index > 0:
+            # get the value of the selected item
+            selected_value = listbox.get(selected_index)
+            # delete the selected item from the listbox
+            listbox.delete(selected_index)
+            # insert the item back into the listbox at the new position
+            listbox.insert(selected_index - 1, selected_value)
+            # select the moved item
+            listbox.selection_set(selected_index - 1)
 
-      # Change the background color of the active item
-      widget.itemconfig(tk.ACTIVE, bg='gray')
-
-  def drag_end(event):
-      widget = event.widget
-      if widget.drag_data:
-          # Delete the original list item
-          index = widget.index(tk.ACTIVE)
-          widget.delete(index)
-
-          # Insert the dragged item at the current position
-          drop_index = widget.nearest(event.y)
-          widget.insert(drop_index, widget.drag_data)
-
-          # Reset the background color of the item
-          widget.itemconfig(drop_index, bg='white')
-
-          widget.drag_data = None 
+    @staticmethod
+    def move_down(listbox):
+        # get the index of the current selection
+        selected_index = listbox.curselection()[0]
+        if selected_index < listbox.size() - 1:
+            # get the value of the selected item
+            selected_value = listbox.get(selected_index)
+            # delete the selected item from the listbox
+            listbox.delete(selected_index)
+            # insert the item back into the listbox at the new position
+            listbox.insert(selected_index + 1, selected_value)
+            # select the moved item
+            listbox.selection_set(selected_index + 1)
 
 
 class MethodsListBoxCreator:
@@ -39,8 +44,11 @@ class MethodsListBoxCreator:
             # listbox.insert(tk.END, item.name)
             listbox.insert(tk.END, item)
 
-        listbox.drag_data = None
-        listbox.bind("<Button-1>", ListBoxDrag.drag_start)
-        listbox.bind("<ButtonRelease-1>", ListBoxDrag.drag_end)
+        up_button = tk.Button(self.root, text="Move up", command=lambda: ListBoxUpAndDown.move_up(listbox))
+        up_button.pack()
+
+        down_button = tk.Button(self.root, text="Move down", command=lambda: ListBoxUpAndDown.move_down(listbox))
+        down_button.pack()
 
         return listbox
+

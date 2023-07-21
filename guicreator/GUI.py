@@ -31,15 +31,24 @@ class Gui():
         self.methods_listbox = MethodsListBoxGui(self.root, method_to_list)
 
         # Methods parameters
-        
         self.threshold = ThresholdGui(self.root, process_image_function)
         self.resize = ResizeGui(self.root, process_image_function)
         self.gaussian_blur = GaussianBlurGui(self.root, process_image_function)
         self.find_contours = FindContoursGui(self.root, process_image_function)
         self.cvt_color = CvtColorGui(self.root, process_image_function)
 
+        # On close window
+        self.root.protocol("WM_DELETE_WINDOW", self.destroy)
+
     def start(self): 
         process_button = tk.Button(self.root, text='Process', command=self.ocr_function)
         process_button.pack()
 
         self.root.mainloop()
+
+    def destroy(self):
+        self.threshold.window.destroy()
+        # self.blur.window.destroy()
+        # self.contours.window.destroy()
+        # self.canny.window.destroy()
+        self.root.destroy()
