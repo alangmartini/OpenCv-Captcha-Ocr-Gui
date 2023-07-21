@@ -4,6 +4,8 @@ from chains.AbsChain import AbsChain
 
 
 class GaussianBlurChain(AbsChain):
+    name = "GaussianBlur"
+
     @staticmethod
     def process_image(image_processor: ImageProcessor, gui: Gui):
         if not gui.gaussian_blur.check.get():

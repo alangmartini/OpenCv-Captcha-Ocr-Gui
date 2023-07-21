@@ -5,6 +5,8 @@ from chains.AbsChain import AbsChain
 
 
 class ThresholdChain(AbsChain):
+    name = "Threshold"
+    
     @staticmethod
     def process_image(image_processor: ImageProcessor, gui: Gui):
         if not gui.threshold.check.get():

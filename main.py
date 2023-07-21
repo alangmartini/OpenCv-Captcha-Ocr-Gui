@@ -7,17 +7,21 @@ from chains.ThresholdChain import ThresholdChain
 from chains.ResizeChain import ResizeChain
 from chains.GaussianBlurChain import GaussianBlurChain
 from chains.FindContoursChain import FindContoursChain
+from chains.CvtColorChain import CvtColorChain
 from ocr.Ocr import ImageRecognition
 
 
 class Main:
     methods_mapping = {
         # "Blur": BlurChain.BlurChain,
+        "CvtColor": CvtColorChain,
         "Resize": ResizeChain,
         "GaussianBlur": GaussianBlurChain,
         "Threshold": ThresholdChain,
         "FindContours": FindContoursChain,
     }
+
+    # methods_mapping = [CvtColorChain, ResizeChain, GaussianBlurChain, ThresholdChain, FindContoursChain]
 
     def __init__(self) -> None:
         self.thread_gui = None
@@ -38,7 +42,6 @@ class Main:
         for method in methods_to_apply:
             Main.methods_mapping[method].process_image(self.image_processor, self.gui)
 
-    
     def ocr_image(self):
         self.ocr.recognize_captcha(self.image_processor.cv_img)
 

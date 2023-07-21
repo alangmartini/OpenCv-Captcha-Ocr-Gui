@@ -5,6 +5,8 @@ from chains.AbsChain import AbsChain
 
 
 class FindContoursChain(AbsChain):
+    name = "FindContours"
+    
     @staticmethod
     def process_image(image_processor: ImageProcessor, gui: Gui):
         if not gui.find_contours.check.get():

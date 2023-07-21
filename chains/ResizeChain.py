@@ -4,6 +4,8 @@ from chains.AbsChain import AbsChain
 
 
 class ResizeChain(AbsChain):
+    name = "Resize"
+
     @staticmethod
     def process_image(image_processor: ImageProcessor, gui: Gui):
         if not gui.resize.check.get():

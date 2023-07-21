@@ -36,6 +36,7 @@ class MethodsListBoxCreator:
         listbox.pack()
 
         for item in self.method_to_list:
+            # listbox.insert(tk.END, item.name)
             listbox.insert(tk.END, item)
 
         listbox.drag_data = None

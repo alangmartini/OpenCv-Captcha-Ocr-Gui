@@ -4,6 +4,7 @@ from guicreator.elements.MethodsListBoxGui import MethodsListBoxGui
 from guicreator.elements.ResizeGui import ResizeGui
 from guicreator.elements.GaussianBlurGui import GaussianBlurGui
 from guicreator.elements.FindContoursGui import FindContoursGui
+from guicreator.elements.CvtColorGui import CvtColorGui
 
 
 class Gui():
@@ -30,10 +31,12 @@ class Gui():
         self.methods_listbox = MethodsListBoxGui(self.root, method_to_list)
 
         # Methods parameters
+        
         self.threshold = ThresholdGui(self.root, process_image_function)
         self.resize = ResizeGui(self.root, process_image_function)
         self.gaussian_blur = GaussianBlurGui(self.root, process_image_function)
         self.find_contours = FindContoursGui(self.root, process_image_function)
+        self.cvt_color = CvtColorGui(self.root, process_image_function)
 
     def start(self): 
         process_button = tk.Button(self.root, text='Process', command=self.ocr_function)
