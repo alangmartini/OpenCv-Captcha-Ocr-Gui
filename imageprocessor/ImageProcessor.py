@@ -27,29 +27,6 @@ class ImageProcessor:
         contours, _ = cv2.findContours(self.cv_img, retr_method, approx_method)
         self.cv_img = cv2.cvtColor(self.cv_img, cv2.COLOR_GRAY2RGB)
         self.cv_img = cv2.drawContours(self.cv_img, contours, -1, (255, 0, 0), 3)
-
-    def preprocess_image(self, image_path):
-        # Load the image from file
-        image = cv2.imread(image_path)
-
-        # Convert the image to grayscale
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        # Apply a blur to the image (this can help remove noise)
-        image = cv2.GaussianBlur(image, (5, 5), 0)
-
-        # Apply thresholding (this can help make the text more clear)
-        _, image = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
-
-        # Get the output directory and filename
-        output_dir = os.path.dirname(image_path)
-        output_filename = "processed.png"
-
-        # Save the processed image
-        output_path = os.path.join(output_dir, output_filename)
-        cv2.imwrite(output_path, image)
-
-        return Image.open(output_path)
     
     def reset_image(self):
         self.cv_img = self.raw_img
