@@ -4,6 +4,25 @@
 This project provides a graphical user interface (GUI) for applying various image processing methods using OpenCV. With a "Process" button that applies
 all Tesseract methods in the current altered image.
 
+## Installing
+
+1. Install dependencies
+```bash
+pip install -r ./requirements.txt
+```
+
+2. Have tesseract locally on you computer
+
+    - Script right now looks for it in `'C:\Program Files\Tesseract-OCR\tesseract.exe'`, but you can change
+    it for you need in **src/ocr/OCR.py**
+
+    - If you have your tesseract on PATH, you can comment the line altogether.
+
+3. Run the main script
+```
+    python main.py
+```
+
 ## Adding a New Method
 
 The process of adding a new method to the application consists of the following steps:
