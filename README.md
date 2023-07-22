@@ -1,6 +1,8 @@
+# IN PROGRESS
 # Image Processing GUI with OpenCV
 
-This project provides a graphical user interface (GUI) for applying various image processing methods using OpenCV.
+This project provides a graphical user interface (GUI) for applying various image processing methods using OpenCV. With a "Process" button that applies
+all Tesseract methods in the current altered image.
 
 ## Adding a New Method
 
